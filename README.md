@@ -1,23 +1,15 @@
-# Root Detection Plugin for Apache Cordova
+# root与模拟器环境检测插件
 
-Use this plugin to check if the android device running the app is rooted.
+用于检测app是否运行在root/模拟器环境
 
 
-## Install
-
-### Locally
+## 安装
 
 ```
-cordova plugin add cordova-plugin-root-detection
+cordova plugin add https://github.com/shuto-cn/cordova-plugin-root-detection
 ```
 
-or
-
-```
-cordova plugin add https://github.com/trykovyura/cordova-plugin-root-detection.git
-```
-
-## Usage
+## 方法
 
 ### isDeviceRooted
 
@@ -25,9 +17,7 @@ cordova plugin add https://github.com/trykovyura/cordova-plugin-root-detection.g
 rootdetection.isDeviceRooted(successCallback, errorCallback);
 ```
 
-- => `successCallback` is called with true if the device is rooted, otherwise false
-- => `errorCallback` is called if there was an error determining if the device is rooted
-- returns '1' if device is rooted else '0'
+- 返回值1代表root环境，0代表非root环境
 
 ### Example
 ```js
@@ -40,10 +30,27 @@ var errorCallback = function (error) {
 rootdetection.isDeviceRooted(successCallback, errorCallback);
 ```
 
-## Platform Support
 
-Android only.
 
-## License
+### isEmulate
 
-MIT License
+```js
+rootdetection.isEmulate(successCallback, errorCallback);
+```
+
+- 返回值1代表模拟器环境，0代表非模拟器环境
+
+### Example
+```js
+var successCallback = function (result) {
+    var isEmu = result == 1;
+};
+var errorCallback = function (error) {
+    console.error(error);
+};
+rootdetection.isEmulate(successCallback, errorCallback);
+```
+
+## 平台支持
+
+Android
